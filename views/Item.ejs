@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="./edit.css">
+	<title>Item</title>
+</head>
+<body>
+<header>
+	<nav class="navbar">
+		<a href = "/dashboard">Main</a>
+	</nav>
+	<nav class="navbar">
+		<a href = "#home" onclick="homeClick()">huis</a>
+		<a href = "#cost" onclick="costClick()">Kosten</a>
+		<a href = "#invest" onclick="investClick()">Opbrengsten</a>
+	</nav>
+</header>
+
+<section class="home" id="home">
+	<div class="container">
+		<div class="swiper-container home-slider">
+			<div class="swiper-wrapper wrapper">
+				<div class="swiper-slide slide">
+					<div class="content">
+						<h3><%= data.name %></h3>
+						<h4><%= data.description %></h4>
+					</div>
+					<div class="image">
+						<img src = "images/innov.jpg"
+						     alt = "">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!--start cost -->
+<section class="menu" id="cost">
+	<div class="section-header">
+		<h1 class="heading">Kosten</h1>
+		<img src="images/cost.jpg" alt="">
+	</div>
+	<div class="box-container">
+		<div class="box">
+			<div class="header">
+				<img src = "images/finance.jpg"
+				     alt = "">
+				<h3>Financiën</h3>
+			</div>
+			<p>Besparing op de zorg kosten van patiënten die hun heupen breken. Dit is naar schatting <span><%= data.avrPeopleCostMonthly%></span> per jaar.</p>
+			<p>Besparing op de personeelskosten van patiënten die hun heupen breken. Dit is naar schatting <span><%= data.currentMoneyCostMonthly%></span> per jaar. </p>
+		</div>
+		<div class="box">
+			<div class="header">
+				<img src = "images/time.jpg"
+				     alt = "">
+				<h3>Tijd</h3>
+			</div>
+			<p>Besparing op personeelskosten die minder ingezet hoeven te worden vanwege minder heupbreuken. <span><%= data.currentTimeCostMonthly%></span></p>
+		</div>
+	</div>
+</section><<!--start innov -->
+<section class="menu" id="invest">
+	<div class="section-header">
+		<h1 class="heading">Opbrengsten</h1>
+		<img src="images/revenue.jpg" alt="">
+	</div>
+	<div class="box-container">
+		<div class="box">
+			<div class="header">
+				<img src = "images/finance.jpg"
+				     alt = "">
+				<h3>Financiën</h3>
+			</div>
+			<p>Besparing op de zorg kosten van patiënten die hun heupen breken. Dit is naar schatting <span><%= data.deployCost%></span> per jaar.</p>
+			<p>Besparing op de personeelskosten van patiënten die hun heupen breken. Dit is naar schatting <span><%= data.pricePerPiece%></span> per jaar. </p>
+		</div>
+		<div class="box">
+			<div class="header">
+				<img src = "images/time.jpg"
+				     alt = "">
+				<h3>Tijd</h3>
+			</div>
+			<p>Besparing op personeelskosten die minder ingezet hoeven te worden vanwege minder heupbreuken. <span><%= data.deployTimePerHours%></span> </p>
+			<p>Besparing op personeelskosten die minder ingezet hoeven te worden vanwege minder heupbreuken. <span><%= data.deployCost%></span> </p>
+		</div>
+	</div>
+</section>
+
+<script>
+	let homeClick = ()=>{
+		document.getElementById('home').classList.add('active');document.getElementById('cost').classList.remove('active');document.getElementById('invest').classList.remove('active')
+	}
+	let costClick = ()=>{
+		document.getElementById('home').classList.remove('active');document.getElementById('cost').classList.add('active');document.getElementById('invest').classList.remove('active')
+	}
+	let investClick = ()=>{
+		document.getElementById('home').classList.remove('active');document.getElementById('cost').classList.remove('active');document.getElementById('invest').classList.add('active')
+	}
+</script>
+</body>
+</html>

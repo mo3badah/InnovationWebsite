@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="./main.css">
+	<title>Main Dashboard</title>
+</head>
+<body>
+<div class="dashboard" style="padding: 20px">
+	<div class="heading">
+		<h2>Welcome</h2>
+		<h1 style="text-align: left; margin-top: 40px; color: black"><%=query.fn%> <%=query.ln%></h1>
+	</div>
+	<div class="image-container" style="">
+		<img src="images/welcome.png" alt=""/>
+	</div>
+</div>
+
+<% if (query.admin == "true"){ %>
+	<header>
+		<nav class="navbar">
+			<form action="/addnew" class="admin" method="post">
+				<input type="text" name="name" value="" hidden="hidden">
+				<input type="submit" value="Add New Innovation">
+			</form>
+			<form action="/users" class="admin" method="post">
+				<input type="text" name="name" value="" hidden="hidden">
+				<input type="submit" value="Manage Users">
+			</form>
+		</nav>
+	</header>
+<% } %>
+<!--start innov -->
+<section class="menu" id="menu">
+	<div class="section-header">
+		<h3 class="sub-heading">Our Innovations</h3>
+		<h1 class="heading">Wide your thoughts and open your mind</h1>
+	</div>
+	<div class="box-container">
+		<% data.forEach(function(item) { %>
+		<div class="innov-view">
+			<div class="box">
+				<h3><%= item.name %></h3>
+				<p><%= item.description %></p>
+			</div>
+			<div class="controller">
+				<form action="/item" class="view" method="post">
+					<input type="text" name="name" value="<%= item.name %>" hidden="hidden">
+					<input type="submit" value="View">
+				</form>
+				<% if (query.admin == "true"){ %>
+					<form action="/editInnov" class="edit" method="post">
+						<input type="text" value="<%= item.name%>" name="name" hidden="hidden">
+							<input type="submit" value="Edit">
+					</form>
+					<form action="/deleteInnovData" class="delete" method="post">
+						<input type="text" name="name" value="<%= item.name%>" hidden="hidden">
+							<input type="submit" value="Delete">
+					</form>
+					<% } %>
+			</div>
+		</div>
+			<% }); %>
+
+	</div>
+</section>
+</body>
+</html>

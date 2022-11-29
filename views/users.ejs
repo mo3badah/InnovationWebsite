@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="./users.css">
+	<link rel="stylesheet" href="./sign.css">
+	<title>Users</title>
+</head>
+<body>
+<header>
+	<nav class="navbar">
+		<a href = "/dashboard">Main</a>
+	</nav>
+</header>
+<section class="order" id="order">
+	<div class="section-header">
+		<h3 class="sub-heading">Users Details</h3>
+	</div>
+</section>
+<div class="all-container">
+	<div class="generate">
+		<form action="/addNewUser" method="post">
+			<h1>Create new account</h1>
+			<div class="inputs">
+				<input type="text" placeholder="First Name" name="fn" required/>
+				<input type="text" placeholder="Last Name" name="ln" required/>
+				<input type="number" placeholder="Age" name="age" min="0"/>
+				<input type="text" placeholder="Flag" name="flag" value="false" hidden/>
+				<input type="email" placeholder="Email" name="email" required/>
+				<input type="password" placeholder="Password" id="password" name="password"required/>
+				<input type="password" placeholder="Confirm Password" id="confirm_password" name="password" required/>
+			</div>
+			<span id='message'></span>
+			<button type="submit">Add</button>
+		</form>
+	</div>
+	<div class="profile-page">
+		<% users.forEach(function(user) { %>
+		<div class="info-box w-full txt-c-mobile">
+			<!-- Start Information Row -->
+			<div class="box p-20 d-flex align-center">
+				<div class="fs-20">
+					<span class="c-grey">Full Name</span>
+					<span><%=user.fn%> <%=user.ln%></span>
+				</div>
+				<div class="fs-20">
+					<span class="c-grey">Email</span>
+					<span><%=user.email%></span>
+				</div>
+				<div class="fs-20">
+					<span class="c-grey">Age</span>
+					<span><%= +user.age%></span>
+				</div>
+			<% if (user.flag){ %>
+				<div class="fs-20 delete-container">
+					<form action="/removeAdmin" class="removeAdmin" method="post">
+						<input type="text" name="email" value="<%=user.email%>" hidden="hidden">
+						<input type="submit" value="Remove Admin">
+					</form>
+				</div>
+			<%}else{%>
+				<div class="fs-20 delete-container">
+					<form action="/makeAdmin" class="makeAdmin" method="post">
+						<input type="text" name="email" value="<%=user.email%>" hidden="hidden">
+						<input type="submit" value="Make Admin">
+					</form>
+				</div>
+				<%}%>
+				<div class="fs-20 delete-container">
+					<form action="/deleteUserData" class="delete" method="post">
+						<input type="text" name="email" value="<%=user.email%>" hidden="hidden">
+						<input type="submit" value="Delete">
+					</form>
+				</div>
+			</div>
+		</div>
+			<% });%>
+	</div>
+</div>
+	<!-- End Information Row -->
+</body>
+</html>

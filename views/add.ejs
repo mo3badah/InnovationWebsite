@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="main.css">
+	<title>Edit Innovation</title>
+</head>
+<body>
+<!--header for the user so that he can go beyond his known url\-->
+<header>
+	<nav class="navbar">
+		<a href = "/dashboard">Main</a>
+	</nav>
+</header>
+<!--start edit-->
+<section class="order" id="order" style="padding-top: 80px">
+	<div class="section-header">
+		<h3 class="sub-heading">Add Innovation</h3>
+		<h1 class="heading">
+			Adding New Innovation
+		</h1>
+	</div>
+	<form action = "/api/innovations"
+		  method="post"
+	      class = "order">
+		<div class="input-box">
+			<div class="input">
+				<label for = "name">Hoe heet het product?</label>
+				<input type = "text"
+				       name="name"
+				       id = "name">
+			</div>
+		</div>
+		<div class="input-box">
+			<div class="input">
+				<label for = "description">meer details over het project toevoegen?</label>
+				<textarea name = "description"
+				          id = "description"
+				          cols = "30"
+				          rows = "10"
+				></textarea>
+			</div>
+		</div>
+		<div class="input-box">
+			<div class="input">
+				<label for = "pricePerPiece">Hoeveel kost het product per stuk? (inclusief btw/bezorgkosten/overige kosten)</label>
+				<input type = "number"
+				       min="0"
+				       name="pricePerPiece"
+				       id = "pricePerPiece" >
+			</div>
+			<div class="input">
+				<label for = "productsNumbers">Aantal producten?</label>
+				<input type = "number"
+				       min="0"
+				       name="productsNumbers"
+				       id = "productsNumbers" >
+			</div>
+		</div>
+		<div class="input-box">
+			<div class="input">
+				<label for = "deployCost">Implementeringskosten?</label>
+				<input type = "number"
+				       min="0"
+				       name="deployCost"
+				       id = "deployCost" >
+			</div>
+			<div class="input">
+				<label for = "avrPeopleCostMonthly">Gemiddelede personeelskosten per maand?</label>
+				<input type = "number"
+				       min="0"
+				       name="avrPeopleCostMonthly"
+				       id = "avrPeopleCostMonthly" >
+			</div>
+		</div>
+		<div class="input-box">
+			<div class="input">
+				<label for = "avrHourWorkMonthly">Gemiddelde arbeidsuren per maand?</label>
+				<input type = "number"
+				       min="0"
+				       name="avrHourWorkMonthly"
+				       id = "avrHourWorkMonthly" >
+			</div>
+			<div class="input">
+				<label for = "currentTimeCostMonthly">Huidige tijdskosten voor dit probleem per maand?</label>
+				<input type = "number"
+				       min="0"
+				       name="currentTimeCostMonthly"
+				       id = "currentTimeCostMonthly">
+			</div>
+			<div class="input">
+				<label for = "currentMoneyCostMonthly">Huidige financiële kosten voor dit probleem per maand?</label>
+				<input type = "number"
+				       min="0"
+				       name="currentMoneyCostMonthly"
+				       id = "currentMoneyCostMonthly">
+			</div>
+			<div class="input">
+				<label for = "deployTimePerHours">Implementeringstijd in uren?</label>
+				<input type = "number"
+				       min="0"
+				       name="deployTimePerHours"
+				       id = "deployTimePerHours">
+			</div>
+			<div class="input">
+				<label for = "TotalTimeInvested">Geschatte tijdsinvestering met innovatie?</label>
+				<input type = "number"
+				       min="0"
+				       name="TotalTimeInvested"
+				       id = "TotalTimeInvested">
+			</div>
+
+		</div>
+
+		<input type = "submit"
+		       value = "Opslaan"
+		       class = "btn"
+		>
+	</form>
+</section>
+<!--end edit-->
+</body>
+</html>
